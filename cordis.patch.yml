@@ -1,0 +1,8 @@
+# Self-activation patch: `dsh plugin --profile <name> add dsh-webbridge`
+# mounts this row after the profile's base bundle. The only service it needs is
+# ctx.tools, which the web and headless profiles both provide.
+- insert:
+    - id: tool-webbridge
+      name: dsh-webbridge
+      config:
+        baseURL: !!js process.env.DSH_WEBBRIDGE_BASE_URL
